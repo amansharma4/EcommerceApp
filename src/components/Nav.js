@@ -4,7 +4,6 @@ import {
   Nav,
   Navbar,
   NavDropdown,
-  Col,
   Image,
 } from "react-bootstrap";
 const NavComp = () => {
@@ -20,7 +19,7 @@ const NavComp = () => {
               width="30px" roundedCircle
             />
             <NavDropdown title="" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
+              <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">My Cart</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">My orders</NavDropdown.Item>
               <NavDropdown.Divider />
