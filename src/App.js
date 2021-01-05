@@ -1,15 +1,16 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/Nav'
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Nav";
 import Productdisplay from "./components/Productdisplay";
 
-const App = ()=> {
+const App = () => {
   return (
-    <div className="App">
+    <Router>
       <Navbar />
       <Productdisplay />
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;
