@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+
 const NavComp = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("cart"));
+    if (data) {
+      setCount(data.length);
+    }
+  }, []);
+
   return (
     <Navbar bg="primary" variant="dark" expand="lg">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>Ecomm App</Navbar.Brand>
+          <Navbar.Brand>EComm App</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Image
-              src="https://p.kindpng.com/picc/s/30-303412_dark-white-circle-transparent-hd-png-download.png"
-              width="30px"
-              roundedCircle
-            />
-            <NavDropdown title="" id="basic-nav-dropdown">
-              <LinkContainer to="/profile">
-                <NavDropdown.Item>My Profile</NavDropdown.Item>
+            <LinkContainer to="/addproduct">
+              <Nav.Link>All products</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/cart">
+              <Nav.Link>My cart({count})</Nav.Link>
+            </LinkContainer>
+            <NavDropdown title="Aman" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+              <LinkContainer to="/cart">
+                <NavDropdown.Item>My Cart</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item href="/cart">My Cart</NavDropdown.Item>
               <NavDropdown.Item href="/order">My orders</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/setting">Settings</NavDropdown.Item>
@@ -31,4 +41,5 @@ const NavComp = () => {
     </Navbar>
   );
 };
+
 export default NavComp;
